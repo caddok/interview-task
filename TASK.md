@@ -84,6 +84,7 @@ The task has the following submission requirements:
 - for your submission to count, you must open a pull request no later than March 1st, 23:59
 - the pull request must have a description of what changes you've implemented
 	- a full change log is a nice to have, but not a hard requirement
+    
 ## Good luck, and have fun!
 
 We're looking forward to seeing your solution.
