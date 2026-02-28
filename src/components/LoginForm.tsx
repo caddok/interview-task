@@ -36,8 +36,8 @@ export function LoginForm({ onAuthSuccess }: LoginFormProps) {
     setIsSubmitting(true);
     await delay(AUTH_FORM_SUBMIT_DELAY_MS);
     dispatch(login({ id: crypto.randomUUID(), email: data.email }));
-    onAuthSuccess();
     setIsSubmitting(false);
+    onAuthSuccess();
   });
 
   return (

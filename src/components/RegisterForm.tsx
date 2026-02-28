@@ -42,8 +42,8 @@ export function RegisterForm({ onAuthSuccess }: RegisterFormProps) {
         name: data.username,
       })
     );
-    onAuthSuccess();
     setIsSubmitting(false);
+    onAuthSuccess();
   });
 
   return (
