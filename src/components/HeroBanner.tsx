@@ -12,6 +12,7 @@ const HeroBanner = ({ movie }: HeroBannerProps) => {
   return (
     <header className="relative h-[70vh] w-full overflow-hidden">
       <img
+        key={movie.id}
         src={`${IMAGE_BASE}/original${movie.backdrop_path}`}
         alt={movie.title}
         className="absolute inset-0 w-full h-full object-cover"

@@ -1,11 +1,13 @@
 import { useQuery } from "@tanstack/react-query";
-import { useMemo } from "react";
-import { getTrending, getTopRated, getUpcoming } from "@/lib/tmdb";
+import { useMemo, useState } from "react";
+import { getTrending, getTopRated, getUpcoming, type Movie } from "@/lib/tmdb";
 import Navbar from "@/components/Navbar";
 import HeroBanner from "@/components/HeroBanner";
 import MovieRow from "@/components/MovieRow";
 
 const Index = () => {
+  const [selectedMovie, setSelectedMovie] = useState<Movie | null>(null);
+
   const { data: trending, isLoading: trendingLoading } = useQuery({
     queryKey: ["trending"],
     queryFn: getTrending,
@@ -31,11 +33,26 @@ const Index = () => {
     <div className="min-h-screen bg-background">
       <Navbar />
       <main>
-        <HeroBanner movie={heroMovie} />
+        <HeroBanner movie={selectedMovie ?? heroMovie} />
         <div className="-mt-16 relative z-10 pb-12">
-          <MovieRow title="🔥 Trending Now" movies={trending} isLoading={trendingLoading} />
-          <MovieRow title="⭐ Top Rated" movies={topRated} isLoading={topRatedLoading} />
-          <MovieRow title="🎬 Upcoming" movies={upcoming} isLoading={upcomingLoading} />
+          <MovieRow
+            title="🔥 Trending Now"
+            movies={trending}
+            isLoading={trendingLoading}
+            onClick={setSelectedMovie}
+          />
+          <MovieRow
+            title="⭐ Top Rated"
+            movies={topRated}
+            isLoading={topRatedLoading}
+            onClick={setSelectedMovie}
+          />
+          <MovieRow
+            title="🎬 Upcoming"
+            movies={upcoming}
+            isLoading={upcomingLoading}
+            onClick={setSelectedMovie}
+          />
         </div>
       </main>
     </div>
