@@ -7,9 +7,10 @@ interface MovieRowProps {
   title: string;
   movies: Movie[] | undefined;
   isLoading: boolean;
+  onClick?: (movie: Movie) => void;
 }
 
-const MovieRow = ({ title, movies, isLoading }: MovieRowProps) => {
+const MovieRow = ({ title, movies, isLoading, onClick }: MovieRowProps) => {
   const scrollRef = useRef<HTMLDivElement>(null);
 
   const scroll = (direction: "left" | "right") => {
@@ -46,7 +47,9 @@ const MovieRow = ({ title, movies, isLoading }: MovieRowProps) => {
                   className="flex-shrink-0 w-[150px] md:w-[180px] aspect-[2/3] rounded-md bg-secondary animate-pulse"
                 />
               ))
-            : movies?.map((movie) => <MovieCard key={movie.id} movie={movie} />)}
+            : movies?.map((movie) => (
+                <MovieCard key={movie.id} movie={movie} onClick={onClick} />
+              ))}
         </div>
 
         {/* Right arrow */}
