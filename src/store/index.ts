@@ -4,7 +4,7 @@ import {
   useSelector,
   type TypedUseSelectorHook,
 } from "react-redux";
-import { AUTH_USER_KEY } from "@/constants/auth";
+import { AUTH_USER_KEY } from "@/constants/constants";
 import type { AuthUser } from "@/types/auth";
 import authReducer from "./slices/authSlice";
 

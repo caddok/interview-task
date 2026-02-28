@@ -10,6 +10,8 @@ export const MIN_AGE_YEARS = 13;
 
 export const MAX_AGE_YEARS = 120;
 
+export const TODAY_ISO = new Date().toISOString().split("T")[0];
+
 export const LOGIN_FORM_DEFAULT_VALUES = {
   email: "",
   password: "",

@@ -6,14 +6,11 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Spinner } from "@/components/ui/spinner";
 import { useAppDispatch } from "@/store";
-import { login } from "@/store/slices/authSlice";
-import {
-  AUTH_FORM_SUBMIT_DELAY_MS,
-  REGISTER_FORM_DEFAULT_VALUES,
-} from "@/constants/auth";
-import { delay } from "@/lib/utils";
+import { REGISTER_FORM_DEFAULT_VALUES } from "@/constants/constants";
+import { simulatedLogin } from "@/lib/simulateLogin";
 import { registerSchema, type RegisterFormData } from "@/lib/schemas/auth";
 import { PasswordField } from "@/components/PasswordField";
+import { toast } from "@/hooks/use-toast";
 
 interface RegisterFormProps {
   onAuthSuccess: () => void;
@@ -21,28 +18,23 @@ interface RegisterFormProps {
 
 export function RegisterForm({ onAuthSuccess }: RegisterFormProps) {
   const dispatch = useAppDispatch();
-  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const {
     register,
     handleSubmit,
-    formState: { errors },
+    formState: { errors, isSubmitting },
   } = useForm<RegisterFormData>({
     resolver: zodResolver(registerSchema),
     defaultValues: REGISTER_FORM_DEFAULT_VALUES,
   });
 
   const onSubmit = handleSubmit(async (data) => {
-    setIsSubmitting(true);
-    await delay(AUTH_FORM_SUBMIT_DELAY_MS);
-    dispatch(
-      login({
-        id: crypto.randomUUID(),
-        email: data.email,
-        name: data.username,
-      })
-    );
-    setIsSubmitting(false);
+    await simulatedLogin(dispatch, {
+      id: crypto.randomUUID(),
+      email: data.email,
+      name: data.username,
+    });
+    toast({ title: "Account created" });
     onAuthSuccess();
   });
 

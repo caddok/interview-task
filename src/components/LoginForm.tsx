@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Button } from "@/components/ui/button";
@@ -6,37 +5,33 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Spinner } from "@/components/ui/spinner";
 import { useAppDispatch } from "@/store";
-import { login } from "@/store/slices/authSlice";
-import {
-  AUTH_FORM_SUBMIT_DELAY_MS,
-  LOGIN_FORM_DEFAULT_VALUES,
-} from "@/constants/auth";
-import { delay } from "@/lib/utils";
+import { LOGIN_FORM_DEFAULT_VALUES } from "@/constants/constants";
+import { simulatedLogin } from "@/lib/simulateLogin";
 import { loginSchema, type LoginFormData } from "@/lib/schemas/auth";
 import { PasswordField } from "@/components/PasswordField";
-
+import { toast } from "@/hooks/use-toast";
 interface LoginFormProps {
   onAuthSuccess: () => void;
 }
 
 export function LoginForm({ onAuthSuccess }: LoginFormProps) {
   const dispatch = useAppDispatch();
-  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const {
     register,
     handleSubmit,
-    formState: { errors },
+    formState: { errors, isSubmitting },
   } = useForm<LoginFormData>({
     resolver: zodResolver(loginSchema),
     defaultValues: LOGIN_FORM_DEFAULT_VALUES,
   });
 
   const onSubmit = handleSubmit(async (data) => {
-    setIsSubmitting(true);
-    await delay(AUTH_FORM_SUBMIT_DELAY_MS);
-    dispatch(login({ id: crypto.randomUUID(), email: data.email }));
-    setIsSubmitting(false);
+    await simulatedLogin(dispatch, {
+      id: crypto.randomUUID(),
+      email: data.email,
+    });
+    toast({ title: "Signed in" });
     onAuthSuccess();
   });
 
