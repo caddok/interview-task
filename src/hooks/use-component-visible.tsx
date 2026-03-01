@@ -4,18 +4,18 @@ export const useComponentVisible = (initialVisible: boolean) => {
   const [isVisible, setIsVisible] = useState(initialVisible);
   const ref = useRef<HTMLDivElement>(null);
 
-  const handleMouseDown = (event: MouseEvent) => {
-    if (ref.current?.contains(event.target as Node)) {
-      return;
-    }
-
-    setIsVisible(false);
-  };
-
   useEffect(() => {
     if (!isVisible) {
       return;
     }
+
+    const handleMouseDown = (event: MouseEvent) => {
+      if (ref.current?.contains(event.target as Node)) {
+        return;
+      }
+
+      setIsVisible(false);
+    };
 
     document.addEventListener("mousedown", handleMouseDown);
 
