@@ -10,9 +10,10 @@ import { simulatedLogin } from "@/lib/simulateLogin";
 import { loginSchema, type LoginFormData } from "@/lib/schemas/auth";
 import { PasswordField } from "@/components/PasswordField";
 import { toast } from "@/hooks/use-toast";
-interface LoginFormProps {
+
+type LoginFormProps = {
   onAuthSuccess: () => void;
-}
+};
 
 export function LoginForm({ onAuthSuccess }: LoginFormProps) {
   const dispatch = useAppDispatch();

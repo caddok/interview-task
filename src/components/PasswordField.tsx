@@ -4,13 +4,13 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import type { UseFormRegisterReturn } from "react-hook-form";
 
-interface PasswordFieldProps {
+type PasswordFieldProps = {
   id: string;
   label: string;
   errorMessage: string | undefined;
   registerReturn: UseFormRegisterReturn;
   autoComplete: "current-password" | "new-password";
-}
+};
 
 export function PasswordField({
   id,

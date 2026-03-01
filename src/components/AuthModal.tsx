@@ -9,10 +9,10 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { LoginForm } from "@/components/LoginForm";
 import { RegisterForm } from "@/components/RegisterForm";
 
-interface AuthModalProps {
+type AuthModalProps = {
   open: boolean;
   onOpen: (open: boolean) => void;
-}
+};
 
 export function AuthModal({ open, onOpen }: AuthModalProps) {
   const handleAuthSuccess = () => onOpen(false);

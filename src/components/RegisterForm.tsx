@@ -11,9 +11,9 @@ import { registerSchema, type RegisterFormData } from "@/lib/schemas/auth";
 import { PasswordField } from "@/components/PasswordField";
 import { toast } from "@/hooks/use-toast";
 
-interface RegisterFormProps {
+type RegisterFormProps = {
   onAuthSuccess: () => void;
-}
+};
 
 export function RegisterForm({ onAuthSuccess }: RegisterFormProps) {
   const dispatch = useAppDispatch();
