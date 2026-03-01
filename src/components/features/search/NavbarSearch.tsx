@@ -9,7 +9,7 @@ import {
 import { useDebounce } from "@/hooks/use-debounce";
 import { useComponentVisible } from "@/hooks/use-component-visible";
 import { useIsMobile } from "@/hooks/use-mobile";
-import { SearchResultsOverlay } from "@/components/SearchResultsOverlay";
+import { SearchResultsOverlay } from "@/components//features/search/SearchResultsOverlay";
 import { toast } from "@/hooks/use-toast";
 
 export function NavbarSearch() {

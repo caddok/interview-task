@@ -6,8 +6,8 @@ import {
   DialogTitle,
 } from "@/components/ui/dialog";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { LoginForm } from "@/components/LoginForm";
-import { RegisterForm } from "@/components/RegisterForm";
+import { LoginForm } from "@/components/features/auth/LoginForm";
+import { RegisterForm } from "@/components/features/auth/RegisterForm";
 
 type AuthModalProps = {
   open: boolean;

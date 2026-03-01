@@ -1,9 +1,9 @@
 import { useQuery } from "@tanstack/react-query";
 import { useMemo, useState, useEffect, useRef } from "react";
 import { getTrending, getTopRated, getUpcoming, type Movie } from "@/lib/tmdb";
-import Navbar from "@/components/Navbar";
-import HeroBanner from "@/components/HeroBanner";
-import MovieRow from "@/components/MovieRow";
+import Navbar from "@/components/features/layout/Navbar";
+import HeroBanner from "@/components/shared/HeroBanner";
+import MovieRow from "@/components/shared/MovieRow";
 import { toast } from "@/hooks/use-toast";
 
 const Index = () => {

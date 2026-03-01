@@ -1,7 +1,7 @@
 import { Link, useParams } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 import { getMovie, IMAGE_BASE } from "@/lib/tmdb";
-import Navbar from "@/components/Navbar";
+import Navbar from "@/components/features/layout/Navbar";
 import { Spinner } from "@/components/ui/spinner";
 import { ArrowLeftIcon, StarIcon } from "lucide-react";
 

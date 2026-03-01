@@ -8,7 +8,7 @@ import { useAppDispatch } from "@/store";
 import { LOGIN_FORM_DEFAULT_VALUES } from "@/constants/constants";
 import { simulatedLogin } from "@/lib/simulateLogin";
 import { loginSchema, type LoginFormData } from "@/lib/schemas/auth";
-import { PasswordField } from "@/components/PasswordField";
+import { PasswordField } from "@/components/features/auth/PasswordField";
 import { toast } from "@/hooks/use-toast";
 
 type LoginFormProps = {

@@ -8,7 +8,7 @@ import { useAppDispatch } from "@/store";
 import { REGISTER_FORM_DEFAULT_VALUES } from "@/constants/constants";
 import { simulatedLogin } from "@/lib/simulateLogin";
 import { registerSchema, type RegisterFormData } from "@/lib/schemas/auth";
-import { PasswordField } from "@/components/PasswordField";
+import { PasswordField } from "@/components/features/auth/PasswordField";
 import { toast } from "@/hooks/use-toast";
 
 type RegisterFormProps = {

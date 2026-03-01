@@ -4,8 +4,8 @@ import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { User } from "lucide-react";
 import { useAppDispatch, useAppSelector } from "@/store";
 import { logout } from "@/store/slices/authSlice";
-import { AuthModal } from "@/components/AuthModal";
-import { NavbarSearch } from "./NavbarSearch";
+import { AuthModal } from "@/components/features/auth/AuthModal";
+import { NavbarSearch } from "../search/NavbarSearch";
 import { toast } from "@/hooks/use-toast";
 
 const Navbar = () => {
