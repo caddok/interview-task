@@ -1,6 +1,6 @@
 import type { AppDispatch } from "@/store";
 import type { AuthUser } from "@/types/auth";
-import { AUTH_FORM_SUBMIT_DELAY_MS } from "@/constants/constants";
+import { AUTH_FORM_SUBMIT_DELAY_MS } from "@/constants/auth";
 import { delay } from "./utils";
 import { login } from "@/store/slices/authSlice";
 

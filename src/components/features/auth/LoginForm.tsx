@@ -5,7 +5,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Spinner } from "@/components/ui/spinner";
 import { useAppDispatch } from "@/store";
-import { LOGIN_FORM_DEFAULT_VALUES } from "@/constants/constants";
+import { LOGIN_FORM_DEFAULT_VALUES } from "@/constants/auth";
 import { simulatedLogin } from "@/lib/simulateLogin";
 import { loginSchema, type LoginFormData } from "@/lib/schemas/auth";
 import { PasswordField } from "@/components/features/auth/PasswordField";

@@ -4,7 +4,7 @@ import {
   USERNAME_MIN_LENGTH,
   MIN_AGE_YEARS,
   MAX_AGE_YEARS,
-} from "@/constants/constants";
+} from "@/constants/auth";
 
 const emailSchema = z
   .string()

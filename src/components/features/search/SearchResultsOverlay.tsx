@@ -2,7 +2,7 @@ import { memo, useRef } from "react";
 import { Link } from "react-router-dom";
 import { Spinner } from "@/components/ui/spinner";
 import { IMAGE_BASE, type Movie } from "@/lib/tmdb";
-import { SEARCH_POSTER_SIZE } from "@/constants/constants";
+import { SEARCH_POSTER_SIZE } from "@/constants/search";
 import { useIntersectionObserver } from "@/hooks/use-intersection-observer";
 import { cn } from "@/lib/utils";
 

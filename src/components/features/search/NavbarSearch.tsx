@@ -5,7 +5,7 @@ import { searchMovies, type Movie } from "@/lib/tmdb";
 import {
   SEARCH_DEBOUNCE_MS,
   SEARCH_MIN_QUERY_LENGTH,
-} from "@/constants/constants";
+} from "@/constants/search";
 import { useDebounce } from "@/hooks/use-debounce";
 import { useComponentVisible } from "@/hooks/use-component-visible";
 import { useIsMobile } from "@/hooks/use-mobile";
