@@ -13,7 +13,6 @@ import { SearchResultsOverlay } from "@/components//features/search/SearchResult
 import { toast } from "@/hooks/use-toast";
 
 export function NavbarSearch() {
-  const isMobile = useIsMobile();
   const {
     ref: wrapperRef,
     isVisible: isExpanded,
