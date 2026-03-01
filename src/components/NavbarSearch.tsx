@@ -10,6 +10,7 @@ import { useDebounce } from "@/hooks/use-debounce";
 import { useComponentVisible } from "@/hooks/use-component-visible";
 import { useIsMobile } from "@/hooks/use-mobile";
 import { SearchResultsOverlay } from "@/components/SearchResultsOverlay";
+import { toast } from "@/hooks/use-toast";
 
 export function NavbarSearch() {
   const isMobile = useIsMobile();
@@ -47,6 +48,11 @@ export function NavbarSearch() {
 
         setSearchError("Failed to search");
         setResults([]);
+        toast({
+          title: "Search failed",
+          description: "Please try again",
+          variant: "destructive",
+        });
       } finally {
         setLoading(false);
       }
