@@ -1,27 +1,58 @@
 import { useQuery } from "@tanstack/react-query";
-import { useMemo, useState } from "react";
+import { useMemo, useState, useEffect, useRef } from "react";
 import { getTrending, getTopRated, getUpcoming, type Movie } from "@/lib/tmdb";
 import Navbar from "@/components/Navbar";
 import HeroBanner from "@/components/HeroBanner";
 import MovieRow from "@/components/MovieRow";
+import { toast } from "@/hooks/use-toast";
 
 const Index = () => {
   const [selectedMovie, setSelectedMovie] = useState<Movie | null>(null);
+  const hasToastRef = useRef(false);
 
-  const { data: trending, isLoading: trendingLoading } = useQuery({
+  const {
+    data: trending,
+    isLoading: trendingLoading,
+    isError: trendingError,
+  } = useQuery({
     queryKey: ["trending"],
     queryFn: getTrending,
   });
 
-  const { data: topRated, isLoading: topRatedLoading } = useQuery({
+  const {
+    data: topRated,
+    isLoading: topRatedLoading,
+    isError: topRatedError,
+  } = useQuery({
     queryKey: ["topRated"],
     queryFn: getTopRated,
   });
 
-  const { data: upcoming, isLoading: upcomingLoading } = useQuery({
+  const {
+    data: upcoming,
+    isLoading: upcomingLoading,
+    isError: upcomingError,
+  } = useQuery({
     queryKey: ["upcoming"],
     queryFn: getUpcoming,
   });
+
+  const anyError = trendingError || topRatedError || upcomingError;
+
+  useEffect(() => {
+    if (anyError && !hasToastRef.current) {
+      toast({
+        title: "Failed to load",
+        variant: "destructive",
+      });
+
+      hasToastRef.current = true;
+
+      if (!anyError) {
+        hasToastRef.current = false;
+      }
+    }
+  }, [anyError]);
 
   const heroMovie = useMemo(() => {
     if (!trending?.length) return undefined;
