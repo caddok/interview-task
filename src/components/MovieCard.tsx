@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { IMAGE_BASE, type Movie } from "@/lib/tmdb";
 
 interface MovieCardProps {
@@ -34,6 +35,13 @@ const MovieCard = ({ movie, onClick }: MovieCardProps) => {
             {movie.title}
           </p>
           <p className="text-muted-foreground text-xs mt-1">{year}</p>
+          <Link
+            to={`/movie/${movie.id}`}
+            onClick={(e) => e.stopPropagation()}
+            className="mt-2 text-xs text-primary underline hover:text-primary/90"
+          >
+            View details
+          </Link>
         </div>
       </div>
     </div>

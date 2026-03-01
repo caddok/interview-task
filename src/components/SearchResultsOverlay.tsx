@@ -1,4 +1,5 @@
 import { memo, useRef } from "react";
+import { Link } from "react-router-dom";
 import { Spinner } from "@/components/ui/spinner";
 import { IMAGE_BASE, type Movie } from "@/lib/tmdb";
 import { SEARCH_POSTER_SIZE } from "@/constants/constants";
@@ -21,12 +22,12 @@ const LazySearchResultItem = ({ movie }: { movie: Movie }) => {
   });
 
   return (
-    <li
-      ref={itemRef}
-      className="flex items-center gap-3 px-3 py-2 text-left min-h-16"
-    >
+    <li ref={itemRef} className="px-2 py-1">
       {isVisible ? (
-        <>
+        <Link
+          to={`/movie/${movie.id}`}
+          className="flex items-center gap-2 px-3 py-2 text-left min-h-16 hover:bg-muted/50 transition-colors rounded-sm"
+        >
           {movie.poster_path ? (
             <img
               src={`${IMAGE_BASE}/${SEARCH_POSTER_SIZE}${movie.poster_path}`}
@@ -40,7 +41,7 @@ const LazySearchResultItem = ({ movie }: { movie: Movie }) => {
             </div>
           )}
           <span className="text-sm font-medium truncate">{movie.title}</span>
-        </>
+        </Link>
       ) : null}
     </li>
   );

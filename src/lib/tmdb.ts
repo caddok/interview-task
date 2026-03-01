@@ -12,6 +12,11 @@ export type Movie = {
   vote_average: number;
 };
 
+export type MovieDetails = Movie & {
+  genres: { id: number; name: string }[];
+  runtime: number | null;
+};
+
 type TMDBResponse = {
   results: Movie[];
 };
@@ -38,7 +43,9 @@ async function fetchTMDB(
   if (!response.ok) {
     throw new Error(`TMDB error: ${response.status}`);
   }
+
   const data: TMDBResponse = await response.json();
+
   return data.results;
 }
 
@@ -54,8 +61,22 @@ export function searchMovies(
   if (!trimmedQuery) {
     return Promise.resolve([]);
   }
+
   return fetchTMDB("/search/movie", {
     params: { query: trimmedQuery },
     signal,
   });
+}
+
+export async function getMovie(
+  movieId: number,
+  signal?: AbortSignal
+): Promise<MovieDetails> {
+  const url = buildUrl(`/movie/${movieId}`);
+  const response = await fetch(url, { signal });
+  if (!response.ok) {
+    throw new Error(`TMDB error: ${response.status}`);
+  }
+
+  return response.json();
 }
