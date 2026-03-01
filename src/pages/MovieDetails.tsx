@@ -74,7 +74,7 @@ const MovieDetails = () => {
   return (
     <div className={"min-h-screen bg-background"}>
       <Navbar />
-      <header className="relative h-[70vh] overflow-hidden">
+      <header className="relative h-[85vh] overflow-hidden">
         {movie.backdrop_path ? (
           <img
             src={`${IMAGE_BASE}/original${movie.backdrop_path}`}
